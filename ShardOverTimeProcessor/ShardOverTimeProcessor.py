@@ -60,7 +60,7 @@ class ShardOverTimeProcessor(Processor):
                 return self.next_working_day(the_date.replace(hour=9, minute=00) + datetime.timedelta(days=1))
             else:
                 return the_date
-        except BaseException as err:
+        except Exception as err:
             # handle unexpected errors here
             exc_type, exc_obj, exc_tb = sys.exc_info()
             error_string = "error: {}, line: {}".format(err, exc_tb.tb_lineno)
@@ -130,7 +130,7 @@ class ShardOverTimeProcessor(Processor):
                 """.format(condition, time_10.strftime(date_format), condition, time_20.strftime(date_format), condition, time_30.strftime(date_format), condition, time_40.strftime(date_format), condition, time_50.strftime(date_format), condition, time_60.strftime(date_format), condition, time_70.strftime(date_format), condition, time_80.strftime(date_format), condition, time_90.strftime(date_format), condition, time_100.strftime(date_format))
             # print(output_string)
             self.env["installable_condition"] = output_string
-        except BaseException as err:
+        except Exception as err:
             # handle unexpected errors here
             exc_type, exc_obj, exc_tb = sys.exc_info()
             error_string = "error: {}, line: {}".format(err, exc_tb.tb_lineno)
